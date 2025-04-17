@@ -120,3 +120,19 @@ button.addEventListener('click', () => {
 const taskText = input.value.trim(); // Get and trim input
 if (taskText === "") return; // Don't add empty tasks
 
+// Create <li> element
+const li = document.createElement('li');
+li.textContent = taskText;
+
+// Bonus: Toggle "completed" on click
+li.addEventListener('click', () => {
+li.classList.toggle('completed');
+alert(`You clicked: "${taskText}"\nThis means the task is now marked as ${li.classList.contains('completed') ? 'done' : 'not done'}.`);
+});
+
+// Add <li> to <ul>
+list.appendChild(li);
+
+// Clear input
+input.value = "";
+});
