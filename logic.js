@@ -110,8 +110,13 @@
 // console.log(acc2.getSummary());
 //Q3
 
-// Get DOM elements
+// Get the elements from the HTML
 const input = document.getElementById("text");
 const button = document.getElementById("btn");
 const list = document.getElementById("lst");
+
+// Add task function
+button.addEventListener('click', () => {
+const taskText = input.value.trim(); // Get and trim input
+if (taskText === "") return; // Don't add empty tasks
 
