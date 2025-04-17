@@ -1,42 +1,105 @@
-function generateReports(students) {
-    const reports = [];
+//Q1
+// function generateReports(students) {
+//     const reports = [];
 
-    for (let i = 0; i < students.length; i++) {
-        const student = students[i];
-        const scores = student.scores;
+//     for (let i = 0; i < students.length; i++) {
+//         const student = students[i];
+//         const scores = student.scores;
 
-        let total = 0;
-        for (let j = 0; j < scores.length; j++) {
-            total += scores[j];
-        }
-        const average = total / scores.length;
+//         let total = 0;
+//         for (let j = 0; j < scores.length; j++) {
+//             total += scores[j];
+//         }
+//         const average = total / scores.length;
 
-        let grade = "";
-        if (average >= 90) grade = "A";
-        else if (average >= 80) grade = "B";
-        else if (average >= 70) grade = "C";
-        else if (average >= 60) grade = "D";
-        else grade = "F";
+//         let grade = "";
+//         if (average >= 90) grade = "A";
+//         else if (average >= 80) grade = "B";
+//         else if (average >= 70) grade = "C";
+//         else if (average >= 60) grade = "D";
+//         else grade = "F";
+        
+//         reports.push({
+//             name: student.name,
+//             average: average,
+//             grade: grade
+//         });
+//     }
 
-        reports.push({
-            name: student.name,
-            average: average,
-            grade: grade
-        });
+//     return reports;
+// }
+
+// const students = [
+//     { name: "Alice", scores: [90, 85, 92] },
+//     { name: "Bob", scores: [70, 68, 72] },
+//     { name: "Charlie", scores: [100, 100, 100] }
+// ];
+
+// console.log(generateReports(students));
+//Q2
+class BankAccount {
+    constructor(ownerName, initialBalance) {
+        this.ownerName = ownerName;
+        this.balance = initialBalance;
+        this.history = [];
+        this.history.push(`Account created for ${ownerName} with initial balance: ${initialBalance}`);
     }
+    deposite(amount) {
+        if (amount <=0) {
+            console.log("Deposit amount must be greater than zero.");
+            return;
+        }
+        this.balance += amount;
+        this.history.push(`Deposited: ${amount}`);
 
-    return reports;
+    }
+    withdraw(amount) {
+        if (amount <=0) {
+            console.log("Withdrawal amount must be greater than zero.");
+            return;
+        }
+        if (amount > this.balance) {
+            console.log("Insufficient funds.");
+            return;
+        }
+        this.balance -= amount;
+        this.history.push(`Withdrawn: ${amount}`);
+    }
+    transferto(anotherAccount, amount) {
+        if (amount <=0) {
+            console.log("Transfer amount must be greater than zero.");
+            return;
+        }
+        if (amount > this.balance) {
+            console.log("Insufficient funds.");
+            return;
+        }
+        this.balance -= amount;
+        anotherAccount.balance += amount;
+        this.history.push(`Transferred: ${amount} to ${anotherAccount.ownerName}`);
+        anotherAccount.history.push
+    }
+    getSummary(){
+        return `Account owner: ${this.ownerName}, Balance: ${this.balance}`;
+    }
+    printHistory() {
+        console.log(`transaction history for ${this.ownerName}:`);
+        for (let i=0; i < this.history.length; i++) {
+            console.log(this.history[i]);
+        }
+    }
 }
 
-const students = [
-    { name: "Alice", scores: [90, 85, 92] },
-    { name: "Bob", scores: [70, 68, 72] },
-    { name: "Charlie", scores: [100, 100, 100] }
-];
-console.log(generateReports(students));
-// Output:
-// [
-//   { name: 'Alice', average: 89, grade: 'B' },
-//   { name: 'Bob', average: 70, grade: 'C' },
-//   { name: 'Charlie', average: 100, grade: 'A' }
-// ]
+const acc1 = new BankAccount("samer", 5000);
+const acc2 = new BankAccount("ahmad", 3000);
+
+acc1.deposite(500);
+acc2.withdraw(1000);
+
+acc1.transferto(acc2, 200);
+
+console.log(acc1.getSummary());
+console.log(acc2.getSummary());
+
+acc1.printHistory();
+acc2.printHistory();
