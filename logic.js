@@ -1,3 +1,4 @@
+//Time complexity: O(n) * o(n) = o(n^2)
 //Q1
 // function generateReports(students) {
 //     const reports = [];
@@ -36,73 +37,75 @@
 // ];
 
 // console.log(generateReports(students));
+//Time complexity: O(n)
 //Q2
 //created a class called BankAccount
-class BankAccount {
-    constructor(ownerName, initialBalance) {
-        this.ownerName = ownerName;
-        this.balance = initialBalance;
-        this.history = [];
-        this.history.push(`Account created for ${ownerName} with initial balance: ${initialBalance}`);
-    }
-    // created a method to deposit money
-    deposite(amount) {
-        if (amount <=0) {
-            console.log("Deposit amount must be greater than zero.");
-            return;
-        }
-        this.balance += amount;
-        this.history.push(`Deposited: ${amount}`);
-    }
-    // created a method to withdraw money
-    withdraw(amount) {
-        if (amount <=0) {
-            console.log("Withdrawal amount must be greater than zero.");
-            return;
-        }
-        if (amount > this.balance) {
-            console.log("Insufficient funds.");
-            return;
-        }
-        this.balance -= amount;
-        this.history.push(`Withdrawn: ${amount}`);
-    }
-    // created amethod to transfer money
-    transferto(anotherAccount, amount) {
-        if (amount <=0) {
-            console.log("Transfer amount must be greater than zero.");
-            return;
-        }
-        if (amount > this.balance) {
-            console.log("Insufficient funds.");
-            return;
-        }
-        this.balance -= amount;
-        anotherAccount.balance += amount;
-        this.history.push(`Transferred: ${amount} to ${anotherAccount.ownerName}`);
-        anotherAccount.history.push
-    }
-    getSummary() {
-        return `Account owner: ${this.ownerName}, Balance: ${this.balance}`;
-    }
-    printHistory() {
-        console.log(`Transaction history for ${this.ownerName}:`);
-        for (let i = 0; i < this.history.length; i++) {
-            console.log(this.history[i]);
-        }
-    }
-}
+// class BankAccount {
+//     constructor(ownerName, initialBalance) {
+//         this.ownerName = ownerName;
+//         this.balance = initialBalance;
+//         this.history = [];
+//         this.history.push(`Account created for ${ownerName} with initial balance: ${initialBalance}`);
+//     }
+//     // created a method to deposit money
+//     deposite(amount) {
+//         if (amount <=0) {
+//             console.log("Deposit amount must be greater than zero.");
+//             return;
+//         }
+//         this.balance += amount;
+//         this.history.push(`Deposited: ${amount}`);
+//     }
+//     // created a method to withdraw money
+//     withdraw(amount) {
+//         if (amount <=0) {
+//             console.log("Withdrawal amount must be greater than zero.");
+//             return;
+//         }
+//         if (amount > this.balance) {
+//             console.log("Insufficient funds.");
+//             return;
+//         }
+//         this.balance -= amount;
+//         this.history.push(`Withdrawn: ${amount}`);
+//     }
+//     // created amethod to transfer money
+//     transferto(anotherAccount, amount) {
+//         if (amount <=0) {
+//             console.log("Transfer amount must be greater than zero.");
+//             return;
+//         }
+//         if (amount > this.balance) {
+//             console.log("Insufficient funds.");
+//             return;
+//         }
+//         this.balance -= amount;
+//         anotherAccount.balance += amount;
+//         this.history.push(`Transferred: ${amount} to ${anotherAccount.ownerName}`);
+//         anotherAccount.history.push
+//     }
+//     getSummary() {
+//         return `Account owner: ${this.ownerName}, Balance: ${this.balance}`;
+//     }
+//     printHistory() {
+//         console.log(`Transaction history for ${this.ownerName}:`);
+//         for (let i = 0; i < this.history.length; i++) {
+//             console.log(this.history[i]);
+//         }
+//     }
+// }
 
-const acc1 = new BankAccount("Samer", 5000);
-const acc2 = new BankAccount("Ahamad", 3000);
+// const acc1 = new BankAccount("Samer", 5000);
+// const acc2 = new BankAccount("Ahamad", 3000);
 
-acc1.deposite(2000);
-acc1.withdraw(1000);
+// acc1.deposite(2000);
+// acc1.withdraw(1000);
 
-acc1.transferto(acc2, 1500);
+// acc1.transferto(acc2, 1500);
 
-acc1.printHistory();
-acc2.printHistory();
+// acc1.printHistory();
+// acc2.printHistory();
 
-console.log(acc1.getSummary());
-console.log(acc2.getSummary());
+// console.log(acc1.getSummary());
+// console.log(acc2.getSummary());
+//Q3
