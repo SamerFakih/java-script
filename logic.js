@@ -37,6 +37,7 @@
 
 // console.log(generateReports(students));
 //Q2
+// created a class called BankAccount
 class BankAccount {
     constructor(ownerName, initialBalance) {
         this.ownerName = ownerName;
@@ -44,6 +45,7 @@ class BankAccount {
         this.history = [];
         this.history.push(`Account created for ${ownerName} with initial balance: ${initialBalance}`);
     }
+    // created a method to deposit money
     deposite(amount) {
         if (amount <=0) {
             console.log("Deposit amount must be greater than zero.");
@@ -51,55 +53,6 @@ class BankAccount {
         }
         this.balance += amount;
         this.history.push(`Deposited: ${amount}`);
-
     }
-    withdraw(amount) {
-        if (amount <=0) {
-            console.log("Withdrawal amount must be greater than zero.");
-            return;
-        }
-        if (amount > this.balance) {
-            console.log("Insufficient funds.");
-            return;
-        }
-        this.balance -= amount;
-        this.history.push(`Withdrawn: ${amount}`);
-    }
-    transferto(anotherAccount, amount) {
-        if (amount <=0) {
-            console.log("Transfer amount must be greater than zero.");
-            return;
-        }
-        if (amount > this.balance) {
-            console.log("Insufficient funds.");
-            return;
-        }
-        this.balance -= amount;
-        anotherAccount.balance += amount;
-        this.history.push(`Transferred: ${amount} to ${anotherAccount.ownerName}`);
-        anotherAccount.history.push
-    }
-    getSummary(){
-        return `Account owner: ${this.ownerName}, Balance: ${this.balance}`;
-    }
-    printHistory() {
-        console.log(`transaction history for ${this.ownerName}:`);
-        for (let i=0; i < this.history.length; i++) {
-            console.log(this.history[i]);
-        }
-    }
+    
 }
-
-const acc1 = new BankAccount("samer", 5000);
-const acc2 = new BankAccount("ahmad", 3000);
-
-acc1.deposite(500);
-acc2.withdraw(1000);
-
-acc1.transferto(acc2, 200);
-
-console.log(acc1.getSummary());
-console.log(acc2.getSummary());
-
-acc1.printHistory();
-acc2.printHistory();
