@@ -67,5 +67,20 @@ class BankAccount {
         this.balance -= amount;
         this.history.push(`Withdrawn: ${amount}`);
     }
+    // created amethod to transfer money
+    transferto(anotherAccount, amount) {
+        if (amount <=0) {
+            console.log("Transfer amount must be greater than zero.");
+            return;
+        }
+        if (amount > this.balance) {
+            console.log("Insufficient funds.");
+            return;
+        }
+        this.balance -= amount;
+        anotherAccount.balance += amount;
+        this.history.push(`Transferred: ${amount} to ${anotherAccount.ownerName}`);
+        anotherAccount.history.push
+    }
     
 }
