@@ -109,3 +109,9 @@
 // console.log(acc1.getSummary());
 // console.log(acc2.getSummary());
 //Q3
+
+// Get DOM elements
+const input = document.getElementById("text");
+const button = document.getElementById("btn");
+const list = document.getElementById("lst");
+
