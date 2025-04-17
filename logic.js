@@ -54,5 +54,18 @@ class BankAccount {
         this.balance += amount;
         this.history.push(`Deposited: ${amount}`);
     }
+    // created a method to withdraw money
+    withdraw(amount) {
+        if (amount <=0) {
+            console.log("Withdrawal amount must be greater than zero.");
+            return;
+        }
+        if (amount > this.balance) {
+            console.log("Insufficient funds.");
+            return;
+        }
+        this.balance -= amount;
+        this.history.push(`Withdrawn: ${amount}`);
+    }
     
 }
